@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 export default function App() {
   
-  const [Usuario,setUsuario] = useState({});
+  const [usuario,setUsuario] = useState();
 
   useEffect(() => { 
 
@@ -12,21 +12,28 @@ export default function App() {
         setUsuario(dados.results[0]);
     }
     buscarUsuario();
-  }, {});
+  }, []);
 
   return (
     <>  
       <h1>Usuário</h1>
       <ul>
         <li>
-          <h1>{Usuario?.name.title} {Usuario?.name.first} {Usuario?.name.last}</h1>
+          <h1>{usuario?.name.title} {usuario?.name.first} {usuario?.name.last}</h1>
         </li>
         <li>
-          <h1>{Usuario?.gender}</h1>
+          <h1>{usuario?.gender}</h1>
         </li>
         <li>
-          <h1>{Usuario?.location.city} {Usuario?.location.street.name} {Usuario?.location.street.number}</h1>
+          <h1>{usuario?.location.city} {usuario?.location.street.name} {usuario?.location.street.number}</h1>
         </li>
+        <li>
+          <h1>{usuario?.email}</h1>
+        </li>
+        <li>
+          <h1>{usuario?.phone}</h1>
+        </li>
+        <img src={usuario?.picture.large} />
       </ul>
     </>
   );
